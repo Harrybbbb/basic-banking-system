@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="style.css">
+    <title>home page</title>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="header__logo"><span class="logoname">finta</span>nce</a>
+
+        <i class='uil uil-bars header__toggle' id="header-toggle"></i>
+
+        <nav class="nav" id="nav-menu">
+            <div class="nav-content bd-grid">
+
+                <div class="nav__menu">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="transaction_history.php" class="nav-link">transaction history</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Privacy Policy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="transfer.html" class="nav-link active">Transfer Money</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="slogan">
+        <div class="slogan_content">
+            <h2>Think <span class="smart">smart,</span>
+                <br>bank with us</h2>
+                <span class="moto">A customer focused bank that provides complete finincial <br>
+                solutions to meet your entire finincial needs</span>
+        </div>
+    </div>
+    <div class="customer">
+        <div class="customer-content">
+            <p>🧑🏻👧🏻 <span class="customer_count">There are more than 125 million users world wide</span></p>
+        </div>
+    </div>
+    <div class="exchange">
+        <div class="exchange_content">
+            <h2>Exchange<span class="money">Money</span></h2>
+            <p>Make your money go further</p>
+        </div>
+        <form action="#">
+            <div class="amount">
+                <p>Enter amount</p>
+                <input type="text" value="1">
+            </div>
+        </form>
+        <div class="drop-list">
+
+            <div class="from">
+              <div class="select-box">
+                <img src="https://flagcdn.com/48x36/us.png" alt="flag">
+                <select></select>
+              </div>
+            </div>
+
+            <div class="icon"><i class="uil uil-exchange-alt" style="color: white;"></i></div>
+
+            <div class="to">
+                <div class="select-box">
+                  <img src="https://flagcdn.com/48x36/np.png" alt="flag">
+                  <select></select>
+                </div>
+              </div>
+            </div>
+
+            <div class="exchange-rate">Getting exchange rate...</div><br>
+             <div class="exchange-button">
+            <button>Get Exchange Rate</button></div>
+            </div>
+
+</body>
+<!--this is script for country-codes-->
+<script src="country-list.js"></script>
+
+<!--this is  script for responsive nav-bar-->
+<script>
+    const showMenu = (toggleId, navId)=>{
+    const toggle = document.getElementById(toggleId),
+    nav = document.getElementById(navId)
+  
+    if(toggle && nav){
+      toggle.addEventListener('click', ()=>{
+        nav.classList.toggle('show')
+        toggle.classList.toggle('bx-x')
+      })
+    }
+  }
+  showMenu('header-toggle','nav-menu')
+
+  
+const navLink = document.querySelectorAll('.nav-link');   
+
+function linkAction(){
+
+  navLink.forEach(n => n.classList.remove('active'));
+  this.classList.add('active');
+}
+navLink.forEach(n => n.addEventListener('click', linkAction));
+</script>
+
+<!--this is script for exchange rate-->
+
+<script>
+    const dropList = document.querySelectorAll("form select"),
+fromCurrency = document.querySelector(".from select"),
+toCurrency = document.querySelector(".to select"),
+getButton = document.querySelector("form button");
+
+for (let i = 0; i < dropList.length; i++) {
+    for(let currency_code in country_list){
+        let selected = i == 0 ? currency_code == "USD" ? "selected" : "" : currency_code == "NPR" ? "selected" : "";
+        let optionTag = `<option value="${currency_code}" ${selected}>${currency_code}</option>`;
+        dropList[i].insertAdjacentHTML("beforeend", optionTag);
+    }
+    dropList[i].addEventListener("change", e =>{
+        loadFlag(e.target);
+    });
+}
+
+function loadFlag(element){
+    for(let code in country_list){
+        if(code == element.value){
+            let imgTag = element.parentElement.querySelector("img");
+            imgTag.src = `https://flagcdn.com/48x36/${country_list[code].toLowerCase()}.png`;
+        }
+    }
+}
+
+window.addEventListener("load", ()=>{
+    getExchangeRate();
+});
+
+getButton.addEventListener("click", e =>{
+    e.preventDefault();
+    getExchangeRate();
+});
+
+const exchangeIcon = document.querySelector("form .icon");
+exchangeIcon.addEventListener("click", ()=>{
+    let tempCode = fromCurrency.value;
+    fromCurrency.value = toCurrency.value;
+    toCurrency.value = tempCode;
+    loadFlag(fromCurrency);
+    loadFlag(toCurrency);
+    getExchangeRate();
+})
+
+function getExchangeRate(){
+    const amount = document.querySelector("form input");
+    const exchangeRateTxt = document.querySelector("form .exchange-rate");
+    let amountVal = amount.value;
+    if(amountVal == "" || amountVal == "0"){
+        amount.value = "1";
+        amountVal = 1;
+    }
+    exchangeRateTxt.innerText = "Getting exchange rate...";
+    let url = `https://v6.exchangerate-api.com/v6/YOUR-API-KEY/latest/${fromCurrency.value}`;
+    fetch(url).then(response => response.json()).then(result =>{
+        let exchangeRate = result.conversion_rates[toCurrency.value];
+        let totalExRate = (amountVal * exchangeRate).toFixed(2);
+        exchangeRateTxt.innerText = `${amountVal} ${fromCurrency.value} = ${totalExRate} ${toCurrency.value}`;
+    }).catch(() =>{
+        exchangeRateTxt.innerText = "Something went wrong";
+    });
+}
+</script>
+</html>

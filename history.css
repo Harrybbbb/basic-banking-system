@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Encode+Sans&family=Heebo:wght@500;600&family=Josefin+Sans&family=Manrope:wght@700&family=Montserrat:ital,wght@1,200&family=Outfit:wght@600&family=Poppins:wght@100&family=Press+Start+2P&family=Quicksand&family=Saira+Condensed:wght@100&family=Tiro+Devanagari+Hindi&family=VT323&family=Varela+Round&display=swap');
+:root{
+    --basic-font:'Work Sans', sans-serif;
+    --heading:'Outfit', sans-serif;
+    --green:rgba(212,253,87,255);
+
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(0, 0, 0);
+}
+.heading{
+    display: flex;
+    justify-content: center;
+}
+.heading h1{
+    color: white;
+    font-family: var(--heading);
+    font-size: 30px;
+}
+.history{
+    color: var(--green);
+}
+table {
+    border-collapse: collapse;
+  }
+  
+th, td {
+    border: 1px solid rgb(84, 84, 84);
+    color: white;
+    font-family: var(--basic-font);
+    padding: 10px;
+  }
+  .table{
+    display: flex;
+    justify-content: center;
+  }

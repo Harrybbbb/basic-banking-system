@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Money Transfer</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+</head>
+<body>
+    <h1>Money <span class="transfer">Transfer</span></h1>
+    <form id="transfer-form">
+        <input type="text" id="from-account" name="from_account" required placeholder="From account no.">
+        <br>
+        <input type="text" id="to-account" name="to_account" required placeholder="To account no.">
+        <br>
+        <input type="number" id="amount" name="amount" step="0.01" required placeholder="Amount">
+        <br>
+        <input type="submit" value="Transfer">
+    </form>
+    <div id="result"></div><br><br>
+
+    <div class="back">
+    <a href="homepage.html"><i class="back-arrow uil uil-arrow-left"></i> Back to homepage</a>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

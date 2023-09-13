@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Encode+Sans&family=Heebo:wght@500;600&family=Josefin+Sans&family=Manrope:wght@700&family=Montserrat:ital,wght@1,200&family=Outfit:wght@600&family=Poppins:wght@100&family=Press+Start+2P&family=Quicksand&family=Saira+Condensed:wght@100&family=Tiro+Devanagari+Hindi&family=VT323&family=Varela+Round&display=swap');
+
+:root {
+  --basic-color: black;
+  --first-color-light: #C4C7F5;
+  --dark-color: #000000;
+  --white-color: #FBFBFB;
+  --body-font: 'Open Sans', sans-serif;
+  --font-color: rgb(145, 145, 145);
+  --green-color: rgba(212,253,87,255);
+  --name: 'Poppins', sans-serif;
+  --logo-font: 'Outfit', sans-serif;
+  }
+
+@media screen and (min-width: 768px) {
+    :root {
+      --nav-name-font-size: 1rem;
+      --normal-font-size: 1rem;
+    }
+    
+  }
+  
+  
+  *, ::before, ::after {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 3rem 0 0 0;
+    font-family: var(--body-font);
+    background-color: var(--basic-color);
+    font-size: .938rem;
+    font-weight: 400;
+  }
+  
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  .bd-grid {
+      max-width: 1024px;
+    display: grid;
+    grid-template-columns: 100%;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+  
+  
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3rem;
+    padding: 0 1rem;
+    background-color: var(--basic-color); 
+     z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header__toggle {
+    font-size: 1.7rem;
+    cursor: pointer;
+    color: var(--font-color);
+  }
+  @media screen and (max-width: 768px) {
+      .nav {
+        position: fixed;
+        top: 50px;
+        left: -100%;
+        background-color: var(--basic-color);
+        width: 80%;
+        height: 100vh;
+        padding: 2rem 0;
+        z-index: 100;
+        transition: .5s;
+        overflow-y: auto;
+      }
+      .bcontent{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        padding: 20px 20px;
+      }
+      
+  
+    }
+  
+  
+  .nav-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .nav-item {
+    margin-bottom: 2rem;
+  }
+  .nav-link {
+    color: var(--font-color);
+  }
+  .nav-link:hover {
+    color: var(--white-color);
+  }
+  .show {
+    left: 0;
+  }
+  .logoname{
+    color: var(--green-color);
+  }
+  .header__logo{
+    color:white;
+    font-family: var(--logo-font);
+    font-size: 30px;
+  }
+  .slogan{
+    display: flex;
+    padding: 40px;
+  }
+  .slogan_content{
+    display: flex;
+    flex-direction: column;
+  }
+  .slogan_content h2{
+    color: white;
+    font-family: var(--logo-font);
+    font-size: 70px;
+  }
+  .smart{
+    color: var(--green-color);
+  }
+  .moto{
+    color: rgb(178, 178, 178);
+    font-size: 15px;
+  }
+  .customer{
+    position: relative;
+    display: flex;
+    background-color: rgba(0,0,0,0.1);
+    width: 380px;
+    left: 3%;
+    -webkit-box-shadow:0px 0px 73px 0px rgba(123,162,71,0.35);
+    -moz-box-shadow: 0px 0px 73px 0px rgba(123,162,71,0.35);
+    box-shadow: 0px 0px 73px 0px rgba(123,162,71,0.35);
+  }
+  .customer-content{
+    display: flex;
+    flex-direction: column;
+  }
+  .customer-content p{
+    color: rgb(178, 178, 178);
+    font-size: 15px;
+  }
+  .exchange{
+    background-color: rgba(31, 31, 31, 0.1);
+    height: 430px;
+    width: 430px;
+    position: absolute;
+    top: 150px;
+    right: 20px;
+    -webkit-box-shadow:0px 0px 73px 18px rgba(123,162,71,0.35);
+    -moz-box-shadow: 0px 0px 73px 18px rgba(123,162,71,0.35);
+    box-shadow: 0px 0px 73px 18px rgba(123,162,71,0.35);
+    border-radius: 20px;
+  }
+  .exchange_content h2{
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+  }
+  .money{
+    color: var(--green-color);
+  }
+  .exchange_content p{
+    color: rgb(125, 125, 125);
+    display: flex;
+    justify-content: center;
+  }
+  form{
+    margin: 40px 0 20px 0;
+  }
+  .amount{
+    color: rgb(254, 252, 252);
+    padding: 20px;
+  }
+  form :where(input, select, button){
+    width: 80%;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+  }
+  form input{
+    color: white;
+    height: 50px;
+    font-size: 17px;
+    padding: 0 15px;
+    background-color:#4e4e4e;
+    border: none;
+  }
+   .drop-list{
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .drop-list .select-box{
+    display: flex;
+    width: 115px;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(74, 74, 74);
+  }
+ .select-box img{
+  max-width: 21px;
+ }
+ .select-box select{
+  width: auto;
+  font-size: 16px;
+  background: none;
+  margin: 0 -5px 0 5px;
+ }
+ .select-box select::-webkit-scrollbar{
+  width: 8px;
+ }
+ .select-box select::-webkit-scrollbar-track{
+  background: #fff;
+ }
+ .select-box select::-webkit-scrollbar-thumb{
+  background: #888;
+  border-radius: 8px;
+  border-right: 2px solid #ffffff;
+ }
+ .drop-list .icon{
+  cursor: pointer;
+  margin-top: 30px;
+  font-size: 22px;
+ }
+ .exchange-rate{
+  display: flex;
+  justify-content: center;
+  color: white;
+ }
+ .exchange-button{
+  display: flex;
+  justify-content: center;
+  
+ }
+ .exchange-button button{
+  background-color: grey;
+  color: white;
+  height: 40px;
+  border-radius: 7px;
+  border: none;
+  font-family: var(--body-font);
+ }
+
+
+
+  @media screen and (min-width: 576px) {
+    .nav {
+      width: 288px;
+    }
+  }
+  @media screen and (max-width : 768px){
+    .exchange{
+      display: none;
+    }
+  
+  }
+  
+  @media screen and (min-width: 768px) {
+    body {
+      margin: 4rem 0 0 0;
+      padding: 0;
+      
+    }
+    .header {
+      height: calc(3rem + 1rem);
+      z-index: 100;
+     
+    }
+    .header__toggle{
+      display: none;
+    }
+
+    .nav {
+      width: 100%;
+      z-index: 100;
+    }
+
+    .nav-content {
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+    .nav-list {
+      display: flex;
+      justify-content: flex-end;
+  
+    }
+    .nav-item {
+      margin: 0 1.5rem;
+      padding: 1.4rem 0;
+    }
+    .nav-link {
+      color: var(--font-color);
+    }
+    .nav-link:hover {
+      color: rgb(255, 255, 255);
+    }
+    
+  }
+  
+  @media screen and (min-width: 1024px) {
+    .bd-grid {
+      margin-left: auto;
+      margin-right: auto;
+    }
+   
+  }
+  
